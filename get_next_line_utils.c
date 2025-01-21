@@ -41,3 +41,13 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		return_val++;
 	return (return_val);
 }
+/*
+int is_next_line()
+{
+    if (strchr(stash, '\n'))
+        return (1);
+    else 
+    return (0);
+}*/
+
+//char *str_cpy
