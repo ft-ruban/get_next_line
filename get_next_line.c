@@ -61,19 +61,25 @@ char *write_and_save()
     return("a");
 }
 
-char *read_text(int fd)
+size_t read_text(int fd)
 {
     // variable char *buff_read ((static stash?))
     char *buff_read;
+    long i;
 
+    i = 0;
     buff_read = malloc ((BUFFER_SIZE + 1) * (sizeof(char)));
-    stash = malloc ((BUFFER_SIZE + 1) * (sizeof(char)));
-    if (!buff_read || !stash)
+    if (!buff_read)
         return (NULL);
     //read (fd, buff_read, BUFFER_SIZE)
-    if (read (fd, buff_read, BUFFER_SIZE) == -1)
+    i = read (fd, buff_read, BUFFER_SIZE)
+    if (i = -1)
         return (NULL);
-    // stash = malloc (strlen stash + BUFFER_SIZE)
+    if (i != BUFFER_SIZE)
+    {
+        stash = malloc ((i) * (sizeof(char)));
+
+    }
     stash = malloc (strlen (stash) + BUFFER_SIZE);
     if (!stash)
         return (NULL);
@@ -87,14 +93,33 @@ char *read_text(int fd)
 
 char *get_next_line(int fd)
 {
-//variables. static *stash, char *returned_array.
     char    *returned_array;
-//assign
+    size_t len;
+    int b;
     //fd = open ("file.txt", O_RDONLY | O_CREAT);
+    len = 0;
+    stash = malloc ((BUFFER_SIZE + 1) * (sizeof(char)));
+    if (!stash)
+        return (NULL);
     if (fd < 0)
         return (NULL);
-    stash = read_text(fd);
-    printf("stash in get_next_line : %s\n", stash);
+        while (!is_next_line())
+        {
+        stash = read_text(fd);
+        if (!stash)
+        return (NULL);
+        printf("stash in get_next_line : %s\n", stash);
+        if (is_next_line(stash))
+        {
+            break;
+        }
+        returned_array = malloc ((strlen returned_array + BUFFER_SIZE) * (sizeof(char)));
+        if (!returned_array)
+            return (NULL);
+        //function to assembly the actual content of returned array with the actual content of stash
+        len += BUFFER_SIZE;
+        }
+    //have to handle the case if it stopped because of a newline or because there was nothing left
     return (returned_array = write_and_save ());    
 }
 
