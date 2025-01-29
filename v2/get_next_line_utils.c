@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevoude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldevoude <ldevoude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:10:16 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/01/16 15:10:19 by ldevoude         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:25:14 by ldevoude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char ft_strjoin(char consts1, char const s2)
+/*char ft_strjoin(char consts1, char const s2)
 {
     size_t len1 = (s1 != NULL) ? ft_strlen(s1) : 0;
     size_t len2 = (s2 != NULL) ? ft_strlen(s2) : 0;
@@ -75,9 +75,9 @@ char ft_strjoin(char consts1, char const s2)
     }
     str[i] = '\0';
     return str;
-}
-/*
-char	*ft_strjoin(char const *s1, char const *s2)
+}*/
+
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -85,7 +85,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	j = 0;
 	i = 0;
-	str = malloc(sizeo(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1); //breakbrokebroken
 	if (!str)
 		return (NULL);
 	while (s1[j] != 0)
@@ -103,4 +103,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[i] = 0;
 	return (str);
-}*/
+}
