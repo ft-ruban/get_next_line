@@ -54,6 +54,29 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+char ft_strjoin(char consts1, char const s2)
+{
+    size_t len1 = (s1 != NULL) ? ft_strlen(s1) : 0;
+    size_t len2 = (s2 != NULL) ? ft_strlen(s2) : 0;
+    charstr;
+    size_t i;
+
+    str = malloc(sizeof(char) * (len1 + len2 + 1));
+    if (!str)
+        return NULL;
+    i = 0;
+    if (s1 != NULL) {
+        while (s1)
+            str[i++] =s1++;
+    }
+    if (s2 != NULL) {
+        while (s2)
+            str[i++] =s2++;
+    }
+    str[i] = '\0';
+    return str;
+}
+/*
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
@@ -62,7 +85,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	j = 0;
 	i = 0;
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	str = malloc(sizeo(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!str)
 		return (NULL);
 	while (s1[j] != 0)
@@ -80,4 +103,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[i] = 0;
 	return (str);
-}
+}*/

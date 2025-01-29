@@ -57,9 +57,12 @@ char *merge_then_free(char *dest, char *src)
     char *new_str;
 
     new_str = ft_strjoin(dest, src);
+    free(dest);
     if(!new_str)
+    {
+        free(src);
         return (NULL);
-    free (dest);
+    }
     return (new_str);
 }
 char *read_content_then_stock (int fd, char *returned_buff)
@@ -79,6 +82,7 @@ char *read_content_then_stock (int fd, char *returned_buff)
         if (bytes_len == -1)
         {
             free (buff);
+            free (returned_buff);
             return (NULL);
         }
         buff[bytes_len] = 0;
@@ -97,7 +101,11 @@ char *get_next_line(int fd)
 
     returned_line = (NULL);
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0 , 0) < 0)
-        return (NULL);
+    {
+        free(buff);
+        buff = NULL;
+        return(NULL);
+    }
     buff = read_content_then_stock(fd, buff);
     if (!buff)
         return (NULL);
