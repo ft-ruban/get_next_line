@@ -102,12 +102,12 @@ char *get_next_line(int fd)
     if (!buff)
         return (NULL);
     returned_line = fill_returned_line (buff, returned_line);
-    if(!returned_line) {
+    if(!returned_line)
+    {
         free(buff);
+        buff = (NULL);
         return (NULL);
     }
     buff = newline_cleaner(buff);
-    if(buff == NULL)
-        return (returned_line);
     return (returned_line);
 }
