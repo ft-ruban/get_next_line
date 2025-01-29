@@ -6,12 +6,15 @@
 /*   By: ldevoude <ldevoude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:11:17 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/01/29 16:24:51 by ldevoude         ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 16:52:37 by ldevoude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+// clean the line until it meet the \n to it will free sbuff if the file is
+// finished, else it will return what is necessary to keep for the next
+// use of get_next_line.c
 char	*newline_cleaner(char *sbuff)
 {
 	int		i;
@@ -42,6 +45,7 @@ char	*newline_cleaner(char *sbuff)
 }
 // it transfer the content of sbuff into the string that I plan to return
 // in the end of the get_next
+
 char	*fill_returned_line(char *sbuff, char *returned_line)
 {
 	int	i;
@@ -66,6 +70,7 @@ char	*fill_returned_line(char *sbuff, char *returned_line)
 }
 // explicit name, it merge two strings (sbuff + buff) then it return the merged
 // version
+
 char	*merge_then_free(char *dest, char *src)
 {
 	char	*new_str;
@@ -81,8 +86,10 @@ char	*merge_then_free(char *dest, char *src)
 	return (new_str);
 }
 // That function does read the content of the file associated by the FD
-// and would continue to do so until the \n is met! then we go to merge then free
-// and we return sbuff that should contain the old leftover + the new line
+// and would continue to do so until the \n is met! then we go to merge
+// then free and we return sbuff that should
+// contain the old leftover + the new line
+
 char	*read_content_then_stock(int fd, char *sbuff)
 {
 	char	*buff;
