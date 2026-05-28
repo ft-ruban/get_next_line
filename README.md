@@ -26,8 +26,7 @@ Was used to test my function, file.txt is created if does not exist in the folde
 ### Compilation
 to try the function setup the main.c and file.txt accordingly then run:
 ```bash
-cc get_next_line.c get_next_line_utils.c mai
-n.c
+cc get_next_line.c get_next_line_utils.c main.c
 ```
 this shall generate an executable that you can launch using
 ```bash
